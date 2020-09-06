@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name         dotlive-bballoon
-// @namespace    meihei
+// @namespace    yameholo
+// @author       meihei
 // @version      1.0
 // @description  .LIVEのキャラクターの風船が飛ぶよ
 // @match        https://twitter.com/*
