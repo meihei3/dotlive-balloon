@@ -1,0 +1,26 @@
+{
+  "name": "dotlive-balloon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dotlive-bballoon.user.js",
+  "dependencies": {
+    "eslint": "^7.8.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-config-prettier": "^6.11.0",
+    "prettier": "^2.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yameholo/dotlive-balloon.git"
+  },
+  "author": "meihei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yameholo/dotlive-balloon/issues"
+  },
+  "homepage": "https://github.com/yameholo/dotlive-balloon#readme"
+}
