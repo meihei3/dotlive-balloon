@@ -2,11 +2,12 @@
 // @name         dotlive-bballoon
 // @namespace    yameholo
 // @author       meihei
-// @version      1.0
+// @version      1.1
 // @description  .LIVEのキャラクターの風船が飛ぶよ
 // @match        https://twitter.com/*
 // @exclude      https://twitter.com/*/*
 // @exclude      https://twitter.com/explore
+// @exclude      https://twitter.com/home
 // @exclude      https://twitter.com/notifications
 // @exclude      https://twitter.com/messages
 // @exclude      https://twitter.com/settings
