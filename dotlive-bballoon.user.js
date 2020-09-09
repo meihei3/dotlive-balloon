@@ -2,15 +2,9 @@
 // @name         dotlive-bballoon
 // @namespace    yameholo
 // @author       meihei
-// @version      1.1
+// @version      2.0
 // @description  .LIVEのキャラクターの風船が飛ぶよ
 // @match        https://twitter.com/*
-// @exclude      https://twitter.com/*/*
-// @exclude      https://twitter.com/explore
-// @exclude      https://twitter.com/home
-// @exclude      https://twitter.com/notifications
-// @exclude      https://twitter.com/messages
-// @exclude      https://twitter.com/settings
 // @grant        none
 // ==/UserScript==
 
@@ -18,7 +12,7 @@
   // 正方形
   const IMAGE_SIZE = '160px';
   // 風船を飛ばすタイミング
-  const TIMEOUT = 1000;
+  const TIMEOUT = 0;
 
   const BALLOONS = {
     rikopin: 'https://pbs.twimg.com/media/Eg8p-hRUMAEN5Ut?format=png',
@@ -145,9 +139,45 @@
       setTimeout(() => {
         db.append(balloon);
         releaseBalloon(balloon);
-      }, TIMEOUT + randint(-100, 1500));
+      }, TIMEOUT + randint(0, 1500));
     });
   };
 
-  main();
+  const isBirthday = () => document.querySelector('span[data-focusable=true]') !== null;
+
+  const URL_REGEX = /^https:\/\/twitter.com\/(?<name>\w+)$/g;
+
+  const isURI = (param) => {
+    return param === 'home'
+            || param === 'explore'
+            || param === 'notifications'
+            || param === 'messages'
+            || param === 'settings';
+  };
+
+  const isProfile = () => {
+    const match = URL_REGEX.exec(location.href);
+    if (match) {
+      return !isURI(match.groups.name);
+    }
+    return false;
+  };
+
+  let prev = null;
+
+  const isChangedUrl = () => prev !== location.href;
+
+  const firer = () => {
+    // URLの変更を感知
+    if (isChangedUrl()){
+      // プロフィール画面かつ誕生日であるか
+      if (isProfile() && isBirthday()) {
+        setTimeout(main, 0);
+        document.querySelector('span[data-focusable=true]').addEventListener('click', main);
+      }
+    }
+    prev = location.href
+  };
+
+  setInterval(firer, 1000);
 })();
